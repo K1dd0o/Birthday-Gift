@@ -1,10 +1,857 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>For My Baby🤍title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For my baby</title>
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #111111;
+      --panel-2: #151515;
+      --text: #f5f5f2;
+      --muted: #bcb8ae;
+      --gold: #c8a96b;
+      --gold-soft: rgba(200, 169, 107, 0.18);
+      --line: rgba(200, 169, 107, 0.45);
+      --green: #1db954;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(200, 169, 107, 0.08), transparent 28%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 35%, #090909 100%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .floating-title {
+      position: fixed;
+      top: 18px;
+      left: 22px;
+      z-index: 999;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      background: rgba(8, 8, 8, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 110px 0 70px;
+    }
+
+    .hero {
+      min-height: 48vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 10px 40px;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1.02rem;
+    }
+
+    .gold-divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 26px auto 0;
+    }
+
+    .section {
+      margin-top: 34px;
+      padding: 30px 0;
+    }
+
+    .section-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(200,169,107,0.05), transparent 25%);
+      pointer-events: none;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .section-title-wrap h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .section-title-wrap p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Letter */
+    .letter-body {
+      position: relative;
+      z-index: 1;
+      padding: 16px 4px 4px;
+      color: #ece8e0;
+    }
+
+    .letter-body p {
+      margin-bottom: 18px;
+      font-size: 1.02rem;
+    }
+
+    .letter-signoff {
+      margin-top: 28px;
+      color: var(--gold);
+    }
+
+    /* Spotify section */
+    .playlist-shell {
+      position: relative;
+      z-index: 1;
+      background: #0d0d0d;
+      border: 1px solid var(--gold);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: inset 0 0 0 1px rgba(200,169,107,0.08);
+    }
+
+    .playlist-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .playlist-cover {
+      width: 110px;
+      height: 110px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, #1a1a1a, #111111);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .playlist-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .playlist-meta small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+    }
+
+    .playlist-meta h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .playlist-meta p {
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .playlist-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr) 70px 58px;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 10px;
+      border-radius: 14px;
+      transition: background 0.25s ease, transform 0.25s ease;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .track:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .track.active {
+      background: rgba(255,255,255,0.06);
+      outline: 1px solid rgba(200,169,107,0.2);
+    }
+
+    .track-index {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .track-info {
+      min-width: 0;
+    }
+
+    .track-title {
+      color: var(--text);
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 3px;
+    }
+
+    .track-artist {
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-duration {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    .play-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      box-shadow: 0 10px 20px rgba(29, 185, 84, 0.18);
+    }
+
+    .play-btn:hover {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    .play-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      margin-left: 2px;
+    }
+
+    .play-btn.pause svg {
+      margin-left: 0;
+    }
+
+    .playlist-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    /* Tinkercad */
+    .embed-frame {
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--gold);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0d0d0d;
+      min-height: 460px;
+    }
+
+    .embed-placeholder,
+    .embed-frame iframe {
+      width: 100%;
+      min-height: 460px;
+      display: block;
+      border: 0;
+    }
+
+    .embed-placeholder {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      background:
+        linear-gradient(180deg, rgba(200,169,107,0.05), transparent),
+        #0d0d0d;
+    }
+
+    .embed-placeholder strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .embed-placeholder code {
+      color: var(--gold);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    /* Wishes */
+    .wishes-hero {
+      text-align: center;
+      padding: 6px 10px 30px;
+    }
+
+    .wishes-hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .wishes-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .wish-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(200,169,107,0.12), rgba(200,169,107,0.06));
+      border: 1px solid rgba(200,169,107,0.35);
+      border-radius: 24px;
+      padding: 24px 22px 22px;
+      min-height: 210px;
+      overflow: hidden;
+    }
+
+    .wish-icon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+      overflow: hidden;
+      background: #1a1a1a;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .wish-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wish-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding-right: 62px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      color: #fff3d8;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .wish-name {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .wish-message {
+      color: #f1ebdf;
+      font-size: 0.98rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 46px 10px 12px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .track {
+        grid-template-columns: 30px minmax(0, 1fr) 56px 52px;
+        gap: 10px;
+      }
+
+      .wishes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .playlist-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 18px, 1100px);
+        padding-top: 92px;
+      }
+
+      .floating-title {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        font-size: 0.88rem;
+      }
+
+      .hero {
+        min-height: 40vh;
+        padding-top: 28px;
+      }
+
+      .section-card {
+        padding: 20px 16px;
+      }
+
+      .track {
+        grid-template-columns: 24px minmax(0, 1fr) 46px 46px;
+        padding: 12px 6px;
+      }
+
+      .track-duration {
+        font-size: 0.82rem;
+      }
+
+      .play-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .embed-frame,
+      .embed-placeholder,
+      .embed-frame iframe {
+        min-height: 360px;
+      }
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family: Arial; background:pink;">
-  <h1>Happy Birthday🤍</h1>
-  <p>This is just the beginning…</p>
+<body>
+  <div class="floating-title">Happy birthday Baby🤍</div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">A little corner made for you</div>
+        <h1>For my baby</h1>
+        <p>
+          A letter, a few songs, a little creation, and a collection of wishes —
+          all gathered here for you.
+        </p>
+        <div class="gold-divider"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: FORMAL LETTER -->
+    <section class="section" id="letter">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">01</div>
+          <div class="section-title-wrap">
+            <h2>A Formal Letter</h2>
+            <p>A place for the words you want to write later.</p>
+          </div>
+        </div>
+
+        <div class="letter-body">
+          <p>My Dearest,</p>
+
+          <p>
+            On this day, I wanted to give you something thoughtful, quiet, and lasting —
+            something you could open and revisit, and something that would hold a few
+            pieces of my heart in one place. This page is only a beginning, and these
+            words are only a draft, but even in draft form, they carry the sincerity of
+            what I wish to tell you.
+          </p>
+
+          <p>
+            You have brought warmth, patience, and meaning into moments that might have
+            otherwise passed unnoticed. In your presence, ordinary days feel gentler,
+            and the future feels brighter. There are many things I admire about you,
+            and even more that I am grateful for, but above all, I am grateful simply
+            that you are you.
+          </p>
+
+          <p>
+            Today is a celebration of your life, your kindness, your beauty, your strength,
+            and the quiet ways you leave goodness wherever you go. I hope this year gives
+            back to you the same grace and comfort that you so naturally give to others.
+          </p>
+
+          <p>
+            Replace this section with your real letter later. You can make it longer,
+            more personal, and fully your own.
+          </p>
+
+          <p class="letter-signoff">
+            With all my love,<br />
+            Your Name
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SPOTIFY -->
+    <section class="section" id="songs">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">02</div>
+          <div class="section-title-wrap">
+            <h2>Our Songs</h2>
+            <p>A Spotify-inspired playlist using your own MP3 files.</p>
+          </div>
+        </div>
+
+        <div class="playlist-shell">
+          <div class="playlist-header">
+            <div class="playlist-cover">
+              <!-- Replace playlist-cover.png with your own image later -->
+              <!-- Example: <img src="playlist-cover.png" alt="Playlist cover" /> -->
+              Playlist Cover
+            </div>
+
+            <div class="playlist-meta">
+              <small>Playlist</small>
+              <h3>For my baby</h3>
+              <p>3 songs · handpicked and made with love</p>
+            </div>
+          </div>
+
+          <div class="playlist-list">
+            <div class="track" data-audio="song1.mp3">
+              <div class="track-index">1</div>
+              <div class="track-info">
+                <div class="track-title">Song Title One</div>
+                <div class="track-artist">Artist Name</div>
+              </div>
+              <div class="track-duration">3:41</div>
+              <button class="play-btn" aria-label="Play song 1">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </button>
+              <audio src="song1.mp3"></audio>
+            </div>
+
+            <div class="track" data-audio="song2.mp3">
+              <div class="track-index">2</div>
+              <div class="track-info">
+                <div class="track-title">Song Title Two</div>
+                <div class="track-artist">Artist Name</div>
+              </div>
+              <div class="track-duration">4:02</div>
+              <button class="play-btn" aria-label="Play song 2">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </button>
+              <audio src="song2.mp3"></audio>
+            </div>
+
+            <div class="track" data-audio="song3.mp3">
+              <div class="track-index">3</div>
+              <div class="track-info">
+                <div class="track-title">Song Title Three</div>
+                <div class="track-artist">Artist Name</div>
+              </div>
+              <div class="track-duration">3:27</div>
+              <button class="play-btn" aria-label="Play song 3">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </button>
+              <audio src="song3.mp3"></audio>
+            </div>
+          </div>
+
+          <div class="playlist-note">
+            Replace <strong>song1.mp3</strong>, <strong>song2.mp3</strong>, and
+            <strong>song3.mp3</strong> with your own files uploaded to the same repository.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TINKERCAD -->
+    <section class="section" id="tinkercad">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">03</div>
+          <div class="section-title-wrap">
+            <h2>A Little Creation</h2>
+            <p>Your Tinkercad heart breadboard can go here.</p>
+          </div>
+        </div>
+
+        <div class="embed-frame">
+          <!-- OPTION A: USE THIS PLACEHOLDER FIRST -->
+          <div class="embed-placeholder">
+            <div>
+              <strong>Tinkercad Embed Placeholder</strong>
+              <p>
+                Later, replace this placeholder with your Tinkercad embed iframe.
+              </p>
+              <p style="margin-top: 12px;">
+                Search for this part in your code and replace it with:
+                <br /><code>&lt;iframe src="YOUR-TINKERCAD-EMBED-LINK"&gt;&lt;/iframe&gt;</code>
+              </p>
+            </div>
+          </div>
+
+          <!-- OPTION B: WHEN READY, DELETE THE PLACEHOLDER ABOVE
+               AND PASTE YOUR TINKERCAD IFRAME HERE
+
+          <iframe
+            src="PASTE_YOUR_TINKERCAD_EMBED_LINK_HERE"
+            title="Tinkercad Heart Circuit"
+            allowfullscreen>
+          </iframe>
+
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: BIRTHDAY WISHES -->
+    <section class="section" id="wishes">
+      <div class="wishes-hero">
+        <p>“A few words from the people who care about you most.”</p>
+      </div>
+
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">04</div>
+          <div class="section-title-wrap">
+            <h2>Birthday Wishes</h2>
+            <p>Messages from the people around you, gathered in one place.</p>
+          </div>
+        </div>
+
+        <div class="wishes-grid">
+          <article class="wish-card">
+            <div class="wish-icon">
+              <!-- Replace with image later -->
+              <!-- Example: <img src="friend1.png" alt="Friend 1"> -->
+              A
+            </div>
+            <div class="wish-label">Message One</div>
+            <h3 class="wish-name">Friend / Family Name</h3>
+            <p class="wish-message">
+              Write the first birthday message here. This can be sweet, short,
+              formal, funny, or heartfelt.
+            </p>
+          </article>
+
+          <article class="wish-card">
+            <div class="wish-icon">
+              <!-- Example: <img src="friend2.png" alt="Friend 2"> -->
+              B
+            </div>
+            <div class="wish-label">Message Two</div>
+            <h3 class="wish-name">Friend / Family Name</h3>
+            <p class="wish-message">
+              Write the second birthday message here. Replace this draft with the
+              actual words from your friend.
+            </p>
+          </article>
+
+          <article class="wish-card">
+            <div class="wish-icon">
+              <!-- Example: <img src="friend3.png" alt="Friend 3"> -->
+              C
+            </div>
+            <div class="wish-label">Message Three</div>
+            <h3 class="wish-name">Friend / Family Name</h3>
+            <p class="wish-message">
+              Write the third birthday message here. You can add more cards by
+              copying this whole block.
+            </p>
+          </article>
+
+          <article class="wish-card">
+            <div class="wish-icon">
+              <!-- Example: <img src="friend4.png" alt="Friend 4"> -->
+              D
+            </div>
+            <div class="wish-label">Message Four</div>
+            <h3 class="wish-name">Friend / Family Name</h3>
+            <p class="wish-message">
+              Write the fourth birthday message here. You can also replace these
+              initials with PNG images.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Made with love.
+    </footer>
+  </main>
+
+  <script>
+    const tracks = document.querySelectorAll(".track");
+
+    function setPlayIcon(button) {
+      button.classList.remove("pause");
+      button.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+      `;
+    }
+
+    function setPauseIcon(button) {
+      button.classList.add("pause");
+      button.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5h3v14H8zm5 0h3v14h-3z"></path>
+        </svg>
+      `;
+    }
+
+    function stopAllTracks() {
+      tracks.forEach(track => {
+        const audio = track.querySelector("audio");
+        const button = track.querySelector(".play-btn");
+        audio.pause();
+        audio.currentTime = 0;
+        track.classList.remove("active");
+        setPlayIcon(button);
+      });
+    }
+
+    tracks.forEach(track => {
+      const button = track.querySelector(".play-btn");
+      const audio = track.querySelector("audio");
+
+      button.addEventListener("click", () => {
+        const isPlaying = !audio.paused;
+
+        stopAllTracks();
+
+        if (!isPlaying) {
+          audio.play();
+          track.classList.add("active");
+          setPauseIcon(button);
+        }
+      });
+
+      audio.addEventListener("ended", () => {
+        track.classList.remove("active");
+        setPlayIcon(button);
+      });
+    });
+  </script>
 </body>
 </html>
