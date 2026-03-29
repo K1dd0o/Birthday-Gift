@@ -344,50 +344,86 @@
       font-size: 0.85rem;
     }
 
-    /* Tinkercad */
-    .embed-frame {
+    /* Tinkercad Section (NEW) */
+    .tinker-card {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 28px;
+      border: 2px solid var(--gold);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.03);
+    }
+    
+    .tinker-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .tinker-preview {
+      border: 1px solid rgba(200,169,107,0.4);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 24px;
+      background: #0d0d0d;
+    }
+    
+    .tinker-preview img,
+    .tinker-preview video {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+    
+    .tinker-button {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 999px;
+      border: 2px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    
+    .tinker-button:hover {
+      background: var(--gold);
+      color: #111;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Section 3 text styling */
+    .tinkercad-section .section-content {
       position: relative;
       z-index: 1;
-      border: 1px solid var(--gold);
-      border-radius: 24px;
-      overflow: hidden;
-      background: #0d0d0d;
-      min-height: 460px;
-    }
-
-    .embed-placeholder,
-    .embed-frame iframe {
-      width: 100%;
-      min-height: 460px;
-      display: block;
-      border: 0;
-    }
-
-    .embed-placeholder {
-      display: grid;
-      place-items: center;
       text-align: center;
-      padding: 30px;
-      color: var(--muted);
-      background:
-        linear-gradient(180deg, rgba(200,169,107,0.05), transparent),
-        #0d0d0d;
     }
-
-    .embed-placeholder strong {
-      display: block;
-      color: var(--text);
-      font-size: 1.1rem;
+    
+    .tinkercad-section .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.78rem;
       margin-bottom: 10px;
     }
-
-    .embed-placeholder code {
-      color: var(--gold);
-      background: rgba(255,255,255,0.04);
-      padding: 2px 6px;
-      border-radius: 6px;
+    
+    .tinkercad-section .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 8px;
     }
-
+    
+    .tinkercad-section .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 1rem;
+    }
+    
     /* Wishes */
     .wishes-hero {
       text-align: center;
@@ -690,28 +726,33 @@
         <p class="section-subtitle">A little heart I made for you.</p>
     
         <div class="tinker-card">
-          <div class="tinker-header">
-            <span class="tinker-dot"></span>
-            <span class="tinker-title">Arduino Heart LED</span>
-          </div>
+          <div class="tinker-title">Arduino Heart LED</div>
     
           <div class="tinker-preview">
-            <div class="tinker-heart">❤</div>
-            <p>Tap below to open the live Tinkercad simulation</p>
+            <!-- PNG preview -->
+            <img
+              id="heartPreview"
+              src="preview.png"
+              alt="Arduino heart preview"
+            />
+    
+            <!-- MP4 video -->
+            <video
+              id="heartVideo"
+              class="hidden"
+              preload="auto"
+              playsinline
+            >
+              <source src="simulation.mp4" type="video/mp4" />
+            </video>
           </div>
     
-          <a
-            class="tinker-button"
-            href="https://www.tinkercad.com/things/8tCj5k3lnau-arduino-heart-led?sharecode=sIxOY54th1Lq7GoO97P5UZEdvF1QlgYJx2xgPPgBKl0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ▶ Play LED Heart
-          </a>
+          <button id="playHeartBtn" class="tinker-button">
+            ▶ Play
+          </button>
         </div>
       </div>
-    </section> 
-
+    </section>
     <!-- SECTION 4: BIRTHDAY WISHES -->
     <section class="section" id="wishes">
       <div class="wishes-hero">
@@ -841,6 +882,29 @@
         track.classList.remove("active");
         setPlayIcon(button);
       });
+    });
+    const playBtn = document.getElementById("playHeartBtn");
+    const preview = document.getElementById("heartPreview");
+    const video = document.getElementById("heartVideo");
+  
+    let isPlaying = false;
+  
+    playBtn.addEventListener("click", () => {
+      if (isPlaying) return;
+  
+      isPlaying = true;
+  
+      preview.classList.add("hidden");
+      video.classList.remove("hidden");
+  
+      video.currentTime = 0;
+      video.play();
+    });
+  
+    video.addEventListener("ended", () => {
+      video.classList.add("hidden");
+      preview.classList.remove("hidden");
+      isPlaying = false;
     });
   </script>
 </body>
