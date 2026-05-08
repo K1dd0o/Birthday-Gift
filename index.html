@@ -701,12 +701,13 @@
         </div>
       </div>
     </section>
-    <!-- SECTION 4: BIRTHDAY WISHES -->
+    
+  <!-- SECTION 4: BIRTHDAY WISHES -->
     <section class="section" id="wishes">
       <div class="wishes-hero">
         <p>“A few words from the people who care about you most.”</p>
       </div>
-
+    
       <div class="section-card">
         <div class="section-heading">
           <div class="section-number">04</div>
@@ -715,60 +716,65 @@
             <p>Messages from the people around you, gathered in one place.</p>
           </div>
         </div>
-
-        <div class="wishes-grid">
-          <article class="wish-card">
-            <div class="wish-icon">
-              <!-- Replace with image later -->
-              <!-- Example: <img src="friend1.png" alt="Friend 1"> -->
-              A
-            </div>
-            <div class="wish-label">Message One</div>
-            <h3 class="wish-name">Friend / Family Name</h3>
-            <p class="wish-message">
-              Write the first birthday message here. This can be sweet, short,
-              formal, funny, or heartfelt.
-            </p>
-          </article>
-
-          <article class="wish-card">
-            <div class="wish-icon">
-              <!-- Example: <img src="friend2.png" alt="Friend 2"> -->
-              B
-            </div>
-            <div class="wish-label">Message Two</div>
-            <h3 class="wish-name">Friend / Family Name</h3>
-            <p class="wish-message">
-              Write the second birthday message here. Replace this draft with the
-              actual words from your friend.
-            </p>
-          </article>
-
-          <article class="wish-card">
-            <div class="wish-icon">
-              <!-- Example: <img src="friend3.png" alt="Friend 3"> -->
-              C
-            </div>
-            <div class="wish-label">Message Three</div>
-            <h3 class="wish-name">Friend / Family Name</h3>
-            <p class="wish-message">
-              Write the third birthday message here. You can add more cards by
-              copying this whole block.
-            </p>
-          </article>
-
-          <article class="wish-card">
-            <div class="wish-icon">
-              <!-- Example: <img src="friend4.png" alt="Friend 4"> -->
-              D
-            </div>
-            <div class="wish-label">Message Four</div>
-            <h3 class="wish-name">Friend / Family Name</h3>
-            <p class="wish-message">
-              Write the fourth birthday message here. You can also replace these
-              initials with PNG images.
-            </p>
-          </article>
+    
+        <div class="wish-carousel">
+          <button class="wish-nav wish-prev" aria-label="Previous wish">‹</button>
+    
+          <div class="wish-stack">
+            <article class="wish-slide active">
+              <div class="wish-photo">
+                <img src="friend1.png" alt="Friend 1 photo">
+              </div>
+              <div class="wish-label">Message One</div>
+              <h3 class="wish-name">Friend / Family Name</h3>
+              <p class="wish-message">
+                Write the first birthday message here. This can be sweet, short,
+                formal, funny, or heartfelt.
+              </p>
+            </article>
+    
+            <article class="wish-slide next">
+              <div class="wish-photo">
+                <img src="friend2.png" alt="Friend 2 photo">
+              </div>
+              <div class="wish-label">Message Two</div>
+              <h3 class="wish-name">Friend / Family Name</h3>
+              <p class="wish-message">
+                Write the second birthday message here. Replace this with the actual message.
+              </p>
+            </article>
+    
+            <article class="wish-slide hidden-slide">
+              <div class="wish-photo">
+                <img src="friend3.png" alt="Friend 3 photo">
+              </div>
+              <div class="wish-label">Message Three</div>
+              <h3 class="wish-name">Friend / Family Name</h3>
+              <p class="wish-message">
+                Write the third birthday message here. You can add more slides by copying this block.
+              </p>
+            </article>
+    
+            <article class="wish-slide prev">
+              <div class="wish-photo">
+                <img src="friend4.png" alt="Friend 4 photo">
+              </div>
+              <div class="wish-label">Message Four</div>
+              <h3 class="wish-name">Friend / Family Name</h3>
+              <p class="wish-message">
+                Write the fourth birthday message here. Add a shared picture above.
+              </p>
+            </article>
+          </div>
+    
+          <button class="wish-nav wish-next" aria-label="Next wish">›</button>
+        </div>
+    
+        <div class="wish-dots">
+          <button class="dot active" aria-label="Go to wish 1"></button>
+          <button class="dot" aria-label="Go to wish 2"></button>
+          <button class="dot" aria-label="Go to wish 3"></button>
+          <button class="dot" aria-label="Go to wish 4"></button>
         </div>
       </div>
     </section>
