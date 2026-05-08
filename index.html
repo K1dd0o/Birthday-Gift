@@ -347,7 +347,7 @@
 
     /* Tinkercad Section (NEW) */
     .tinker-card {
-      max-width: 580px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 28px;
       border: 2px solid var(--gold);
@@ -637,14 +637,13 @@
       <div class="section-number">02</div>
       <div class="section-title-wrap">
         <h2>Our Songs</h2>
-        <p>songs that make me think of us</p>
+        <p>songs that makes me think of us</p>
       </div>
     </div>
 
     <div class="playlist-shell">
       <div class="playlist-meta" style="margin-bottom: 18px;">
         <small>Spotify Playlist</small>
-        <h3>The way you feel to me</h3>
       </div>
 
       <iframe 
@@ -663,24 +662,28 @@
 </section>
 
     <!-- SECTION 3: TINKERCAD -->
-    <section class="section tinkercad-section" id="tinkercad">
-      <div class="section-content">
-        <p class="section-label">Section 3</p>
-        <h2 class="section-title">For my baby</h2>
-        <p class="section-subtitle">A little heart I made for you.</p>
+    <section class="section" id="tinkercad">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">03</div>
+          <div class="section-title-wrap">
+            <h2>For my baby</h2>
+            <p>A little heart I made for you.</p>
+          </div>
+        </div>
     
-        <div class="tinker-card">
-          <div class="tinker-title">Arduino Heart LED</div>
+        <div class="playlist-shell">
+          <div class="playlist-meta" style="margin-bottom: 18px;">
+            <small>Arduino Heart LED</small>
+          </div>
     
           <div class="tinker-preview">
-            <!-- PNG preview -->
             <img
               id="heartPreview"
               src="preview.png"
               alt="Arduino heart preview"
             />
     
-            <!-- MP4 video -->
             <video
               id="heartVideo"
               class="hidden"
@@ -774,4 +777,46 @@
     </footer>
   </main>
 </body>
+    <script>
+  const playBtn = document.getElementById("playHeartBtn");
+  const preview = document.getElementById("heartPreview");
+  const video = document.getElementById("heartVideo");
+  
+  let isPlaying = false;
+  
+  playBtn.addEventListener("click", () => {
+  
+    // PLAY
+    if (!isPlaying) {
+  
+      preview.classList.add("hidden");
+      video.classList.remove("hidden");
+  
+      video.play();
+  
+      playBtn.innerHTML = "⏸ Pause";
+  
+      isPlaying = true;
+  
+    } else {
+  
+      // PAUSE
+      video.pause();
+  
+      playBtn.innerHTML = "▶ Play";
+  
+      isPlaying = false;
+    }
+  });
+  
+  video.addEventListener("ended", () => {
+  
+    video.classList.add("hidden");
+    preview.classList.remove("hidden");
+  
+    playBtn.innerHTML = "▶ Play";
+  
+    isPlaying = false;
+  });
+  </script>
 </html>
