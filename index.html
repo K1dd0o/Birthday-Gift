@@ -711,6 +711,41 @@
       .embed-frame iframe {
         min-height: 360px;
       }
+      .photo-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .photo-modal.show {
+        display: flex;
+      }
+      
+      .photo-modal img {
+        max-width: 95%;
+        max-height: 90vh;
+        border-radius: 18px;
+        border: 1px solid var(--gold);
+        box-shadow: 0 0 40px rgba(200,169,107,0.25);
+      }
+      
+      .photo-close {
+        position: fixed;
+        top: 24px;
+        right: 32px;
+        color: var(--gold);
+        font-size: 42px;
+        cursor: pointer;
+      }
+      
+      .wish-photo img {
+        cursor: zoom-in;
+      }
     }
   </style>
 </head>
@@ -982,6 +1017,10 @@
       Made with love.
     </footer>
   </main>
+  <div id="photoModal" class="photo-modal">
+    <span class="photo-close">&times;</span>
+      <img id="photoModalImg" src="" alt="Expanded photo">
+  </div>
 </body>
     <script>
   const playBtn = document.getElementById("playHeartBtn");
@@ -1094,5 +1133,29 @@
       });
       
       updateWishCarousel();
+
+      const photoModal = document.getElementById("photoModal");
+      const photoModalImg = document.getElementById("photoModalImg");
+      const photoClose = document.querySelector(".photo-close");
+      
+      document.querySelectorAll(".wish-photo img").forEach(img => {
+        img.addEventListener("click", () => {
+          photoModalImg.src = img.src;
+          photoModal.classList.add("show");
+        });
+      });
+      
+      photoClose.addEventListener("click", () => {
+        photoModal.classList.remove("show");
+        photoModalImg.src = "";
+      });
+      
+      photoModal.addEventListener("click", (e) => {
+        if (e.target === photoModal) {
+          photoModal.classList.remove("show");
+          photoModalImg.src = "";
+        }
+      });
+
   </script>
 </html>
