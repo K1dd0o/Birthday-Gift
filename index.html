@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>For my baby</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <style>
     :root {
       --bg: #090909;
       --panel: #111111;
-      --panel-2: #151515;
       --text: #f5f5f2;
       --muted: #bcb8ae;
       --gold: #c8a96b;
-      --gold-soft: rgba(200, 169, 107, 0.18);
       --line: rgba(200, 169, 107, 0.45);
-      --green: #1db954;
       --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       --radius: 22px;
     }
@@ -40,11 +39,6 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
     .floating-title {
       position: fixed;
       top: 18px;
@@ -54,12 +48,12 @@
       letter-spacing: 0.08em;
       color: var(--text);
       background: rgba(8, 8, 8, 0.72);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 10px 14px;
       border-radius: 999px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .page {
@@ -116,7 +110,7 @@
     }
 
     .section-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -129,7 +123,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(200,169,107,0.05), transparent 25%);
+      background: linear-gradient(180deg, rgba(200, 169, 107, 0.05), transparent 25%);
       pointer-events: none;
     }
 
@@ -183,7 +177,7 @@
       color: var(--gold);
     }
 
-    /* Spotify section */
+    /* Shared dark/gold inner frame */
     .playlist-shell {
       position: relative;
       z-index: 1;
@@ -191,39 +185,7 @@
       border: 1px solid var(--gold);
       border-radius: 24px;
       padding: 22px;
-      box-shadow: inset 0 0 0 1px rgba(200,169,107,0.08);
-    }
-
-    .playlist-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .playlist-cover {
-      width: 110px;
-      height: 110px;
-      border-radius: 16px;
-      overflow: hidden;
-      flex-shrink: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(135deg, #1a1a1a, #111111);
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .playlist-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      box-shadow: inset 0 0 0 1px rgba(200, 169, 107, 0.08);
     }
 
     .playlist-meta small {
@@ -235,141 +197,15 @@
       font-size: 0.72rem;
     }
 
-    .playlist-meta h3 {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .playlist-meta p {
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.95rem;
-    }
-
-    .playlist-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .track {
-      display: grid;
-      grid-template-columns: 36px minmax(0, 1fr) 70px 58px;
-      gap: 14px;
-      align-items: center;
-      padding: 12px 10px;
-      border-radius: 14px;
-      transition: background 0.25s ease, transform 0.25s ease;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .track:hover {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .track.active {
-      background: rgba(255,255,255,0.06);
-      outline: 1px solid rgba(200,169,107,0.2);
-    }
-
-    .track-index {
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    .track-info {
-      min-width: 0;
-    }
-
-    .track-title {
-      color: var(--text);
-      font-size: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 3px;
-    }
-
-    .track-artist {
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .track-duration {
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-align: right;
-    }
-
-    .play-btn {
-      width: 42px;
-      height: 42px;
-      border: none;
-      border-radius: 50%;
-      background: var(--green);
-      color: white;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      transition: transform 0.2s ease, filter 0.2s ease;
-      box-shadow: 0 10px 20px rgba(29, 185, 84, 0.18);
-    }
-
-    .play-btn:hover {
-      transform: scale(1.06);
-      filter: brightness(1.08);
-    }
-
-    .play-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-      margin-left: 2px;
-    }
-
-    .play-btn.pause svg {
-      margin-left: 0;
-    }
-
-    .playlist-note {
-      margin-top: 16px;
-      color: var(--muted);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.85rem;
-    }
-
-    /* Tinkercad Section (NEW) */
-    .tinker-card {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 28px;
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      background: rgba(255,255,255,0.03);
-    }
-    
-    .tinker-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-    
+    /* Tinkercad */
     .tinker-preview {
-      border: 1px solid rgba(200,169,107,0.4);
+      border: 1px solid rgba(200, 169, 107, 0.4);
       border-radius: 18px;
       padding: 16px;
       margin-bottom: 24px;
       background: #0d0d0d;
     }
-    
+
     .tinker-preview img,
     .tinker-preview video {
       width: 100%;
@@ -377,10 +213,10 @@
       display: block;
       transition: opacity 0.4s ease;
     }
-    
+
     .tinker-button {
       display: block;
-      margin: 0 auto;      
+      margin: 0 auto;
       padding: 14px 30px;
       border-radius: 999px;
       border: 2px solid var(--gold);
@@ -390,206 +226,17 @@
       cursor: pointer;
       transition: 0.3s ease;
     }
-    
+
     .tinker-button:hover {
       background: var(--gold);
       color: #111;
     }
-    
+
     .hidden {
       display: none !important;
     }
-    
-    /* Section 3 text styling */
-    .tinkercad-section .section-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-    
-    .tinkercad-section .section-label {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.78rem;
-      margin-bottom: 10px;
-    }
-    
-    .tinkercad-section .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-bottom: 8px;
-    }
-    
-    .tinkercad-section .section-subtitle {
-      color: var(--muted);
-      margin-bottom: 22px;
-      font-size: 1rem;
-    }
-    
+
     /* Wishes */
-    .wish-carousel {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 58px 1fr 58px;
-      align-items: center;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    
-    .wish-stack {
-      position: relative;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1200px;
-      overflow: hidden;
-    }
-    
-    .wish-slide {
-      position: absolute;
-      width: min(760px, 94%);
-      min-height: 500px;
-      max-height: 520px;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      padding: 26px;
-      background: linear-gradient(180deg, rgba(200,169,107,0.16), rgba(200,169,107,0.07));
-      border: 1px solid rgba(200,169,107,0.48);
-      border-radius: 26px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-      transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .wish-slide::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .wish-slide::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    .wish-slide::-webkit-scrollbar-thumb {
-      background: rgba(200,169,107,0.45);
-      border-radius: 999px;
-    }
-    
-    .wish-slide.active {
-      opacity: 1;
-      transform: translateX(0) scale(1) rotateY(0deg);
-      z-index: 5;
-      pointer-events: auto;
-    
-      background:
-        linear-gradient(
-          180deg,
-          rgba(22,22,22,0.98),
-          rgba(10,10,10,0.98)
-        );
-    
-      border: 1px solid rgba(200,169,107,0.55);
-    
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.45),
-        0 0 40px rgba(200,169,107,0.08);
-    
-      backdrop-filter: none;
-    }    
-    .wish-slide.prev {
-      opacity: 0.34;
-      transform: translateX(-34%) scale(0.88) rotateY(12deg);
-      z-index: 3;
-      filter: blur(1px);
-    }
-    
-    .wish-slide.next {
-      opacity: 0.34;
-      transform: translateX(34%) scale(0.88) rotateY(-12deg);
-      z-index: 3;
-      filter: blur(1px);
-    }
-    
-    .wish-slide.hidden-slide {
-      opacity: 0;
-      transform: scale(0.78);
-      z-index: 1;
-    }
-    
-    .wish-photo {
-      width: 100%;
-      height: 260px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.12);
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        #151515;
-      margin-bottom: 18px;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-    }
-    
-    .wish-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    /* fallback text if image is missing */
-    .wish-photo img[src=""] {
-      display: none;
-    }
-    
-    .wish-nav {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: rgba(10,10,10,0.6);
-      color: var(--gold);
-      font-size: 2rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: 0.25s ease;
-      display: grid;
-      place-items: center;
-    }
-    
-    .wish-nav:hover {
-      background: var(--gold);
-      color: #111;
-      transform: scale(1.06);
-    }
-    
-    .wish-dots {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: transparent;
-      cursor: pointer;
-      opacity: 0.7;
-    }
-    
-    .dot.active {
-      background: var(--gold);
-      opacity: 1;
-    }
-
     .wishes-hero {
       text-align: center;
       padding: 6px 10px 30px;
@@ -610,40 +257,239 @@
     #wishes .section-title-wrap {
       text-align: center;
     }
-    
-    @media (max-width: 640px) {
-      .wish-carousel {
-        grid-template-columns: 42px 1fr 42px;
-        gap: 6px;
-      }
-    
-      .wish-stack {
-        min-height: 460px;
-      }
-    
-      .wish-slide {
-        width: 96%;
-        min-height: 410px;
-        padding: 18px;
-      }
-    
-      .wish-slide.prev {
-        transform: translateX(-22%) scale(0.86);
-      }
-    
-      .wish-slide.next {
-        transform: translateX(22%) scale(0.86);
-      }
-    
-      .wish-nav {
-        width: 38px;
-        height: 38px;
-        font-size: 1.6rem;
-      }
-    
-      .wish-photo {
-        height: 150px;
-      }
+
+    .wish-carousel {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 58px 1fr 58px;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .wish-stack {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      overflow: hidden;
+    }
+
+    .wish-slide {
+      position: absolute;
+      width: min(760px, 94%);
+      min-height: 500px;
+      max-height: 520px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      padding: 26px;
+      background: linear-gradient(180deg, rgba(200, 169, 107, 0.16), rgba(200, 169, 107, 0.07));
+      border: 1px solid rgba(200, 169, 107, 0.48);
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .wish-slide::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .wish-slide::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .wish-slide::-webkit-scrollbar-thumb {
+      background: rgba(200, 169, 107, 0.45);
+      border-radius: 999px;
+    }
+
+    .wish-slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1) rotateY(0deg);
+      z-index: 5;
+      pointer-events: auto;
+      background: linear-gradient(180deg, rgba(22, 22, 22, 0.98), rgba(10, 10, 10, 0.98));
+      border: 1px solid rgba(200, 169, 107, 0.55);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(200, 169, 107, 0.08);
+      backdrop-filter: none;
+    }
+
+    .wish-slide.prev {
+      opacity: 0.34;
+      transform: translateX(-34%) scale(0.88) rotateY(12deg);
+      z-index: 3;
+      filter: blur(1px);
+    }
+
+    .wish-slide.next {
+      opacity: 0.34;
+      transform: translateX(34%) scale(0.88) rotateY(-12deg);
+      z-index: 3;
+      filter: blur(1px);
+    }
+
+    .wish-slide.hidden-slide {
+      opacity: 0;
+      transform: scale(0.78);
+      z-index: 1;
+    }
+
+    .wish-photo {
+      width: 100%;
+      height: 260px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+        #151515;
+      margin-bottom: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+    }
+
+    .wish-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .wish-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      color: #fff3d8;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .wish-name {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .wish-message {
+      color: #f1ebdf;
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+    }
+
+    .wish-nav {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: rgba(10, 10, 10, 0.6);
+      color: var(--gold);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: grid;
+      place-items: center;
+    }
+
+    .wish-nav:hover {
+      background: var(--gold);
+      color: #111;
+      transform: scale(1.06);
+    }
+
+    .wish-dots {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      opacity: 1;
+    }
+
+    /* Photo modal */
+    .photo-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .photo-modal.show {
+      display: flex;
+    }
+
+    .photo-modal-content {
+      position: relative;
+      background: #0d0d0d;
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      padding: 18px;
+      max-width: min(720px, 90vw);
+      max-height: 82vh;
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(200, 169, 107, 0.18);
+    }
+
+    .photo-modal-content img {
+      display: block;
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
+    .photo-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #0d0d0d;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 28px;
+      line-height: 34px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    .photo-close:hover {
+      background: var(--gold);
+      color: #111;
+    }
 
     footer {
       text-align: center;
@@ -653,18 +499,8 @@
     }
 
     @media (max-width: 860px) {
-      .track {
-        grid-template-columns: 30px minmax(0, 1fr) 56px 52px;
-        gap: 10px;
-      }
-
-      .wishes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .playlist-header {
-        flex-direction: column;
-        align-items: flex-start;
+      .playlist-shell {
+        padding: 16px;
       }
     }
 
@@ -692,63 +528,52 @@
         padding: 20px 16px;
       }
 
-      .track {
-        grid-template-columns: 24px minmax(0, 1fr) 46px 46px;
-        padding: 12px 6px;
+      .wish-carousel {
+        grid-template-columns: 38px 1fr 38px;
+        gap: 6px;
       }
 
-      .track-duration {
-        font-size: 0.82rem;
+      .wish-stack {
+        min-height: 500px;
       }
 
-      .play-btn {
-        width: 38px;
-        height: 38px;
+      .wish-slide {
+        width: 98%;
+        min-height: 440px;
+        max-height: 460px;
+        padding: 18px;
       }
 
-      .embed-frame,
-      .embed-placeholder,
-      .embed-frame iframe {
-        min-height: 360px;
+      .wish-slide.prev {
+        transform: translateX(-18%) scale(0.86);
       }
-      .photo-modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        inset: 0;
-        background: rgba(0,0,0,0.92);
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
+
+      .wish-slide.next {
+        transform: translateX(18%) scale(0.86);
       }
-      
-      .photo-modal.show {
-        display: flex;
+
+      .wish-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
       }
-      
-      .photo-modal img {
-        max-width: 95%;
-        max-height: 90vh;
-        border-radius: 18px;
-        border: 1px solid var(--gold);
-        box-shadow: 0 0 40px rgba(200,169,107,0.25);
+
+      .wish-photo {
+        height: 180px;
       }
-      
-      .photo-close {
-        position: fixed;
-        top: 24px;
-        right: 32px;
-        color: var(--gold);
-        font-size: 42px;
-        cursor: pointer;
+
+      .photo-modal-content {
+        max-width: 92vw;
+        max-height: 78vh;
       }
-      
-      .wish-photo img {
-        cursor: zoom-in;
+
+      .photo-modal-content img {
+        max-height: 68vh;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="floating-title">Happy birthday Baby🤍</div>
 
@@ -779,22 +604,22 @@
           <p>My Baby,</p>
 
           <p>
-            Happy 21st birthday! I wanted to surprise you with this kasi lagi mo nahuhulaan 
-            bibigay ko sayo ehh nyeee HAHAHAHA. So aside sa gift and sa gala to ATC I made 
-            this website for you on the day before your special day, pero consider na rin 
+            Happy 21st birthday! I wanted to surprise you with this kasi lagi mo nahuhulaan
+            bibigay ko sayo ehh nyeee HAHAHAHA. So aside sa gift and sa gala to ATC I made
+            this website for you on the day before your special day, pero consider na rin
             natin tong special day for you hehe.
           </p>
 
           <p>
             Dami na rin natin napagdaanan in the span of less than 2 years, minsan may tampuhan
-            minsan may misunderstanding but at the end of the day we solved it together and 
-            learned from it, at yun ang mahalaga. And even if may tampuhan tayo, always remember 
+            minsan may misunderstanding but at the end of the day we solved it together and
+            learned from it, at yun ang mahalaga. And even if may tampuhan tayo, always remember
             na I will be always here, I won’t give up on us kahit ano pa man ang mangyari.
           </p>
 
           <p>
-            Again, happy birthday to the best thing that ever happened to me. I love you always 
-            and forever. I want you to enjoy your day and I hope nagustuhan mo itong simpleng 
+            Again, happy birthday to the best thing that ever happened to me. I love you always
+            and forever. I want you to enjoy your day and I hope nagustuhan mo itong simpleng
             surprise gift ko sayo.
           </p>
 
@@ -806,36 +631,36 @@
       </div>
     </section>
 
-<!-- SECTION 2: SPOTIFY -->
-<section class="section" id="songs">
-  <div class="section-card">
-    <div class="section-heading">
-      <div class="section-number">02</div>
-      <div class="section-title-wrap">
-        <h2>Our Songs</h2>
-        <p>songs that makes me think of us</p>
-      </div>
-    </div>
+    <!-- SECTION 2: SPOTIFY -->
+    <section class="section" id="songs">
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">02</div>
+          <div class="section-title-wrap">
+            <h2>Our Songs</h2>
+            <p>songs that makes me think of us</p>
+          </div>
+        </div>
 
-    <div class="playlist-shell">
-      <div class="playlist-meta" style="margin-bottom: 18px;">
-        <small>Spotify Playlist</small>
-      </div>
+        <div class="playlist-shell">
+          <div class="playlist-meta" style="margin-bottom: 18px;">
+            <small>Spotify Playlist</small>
+          </div>
 
-      <iframe 
-        data-testid="embed-iframe" 
-        style="border-radius:12px" 
-        src="https://open.spotify.com/embed/playlist/3BStfesakgeZOxksRnPjhN?utm_source=generator&theme=0" 
-        width="100%" 
-        height="352" 
-        frameborder="0" 
-        allowfullscreen 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-      </iframe>
-    </div>
-  </div>
-</section>
+          <iframe
+            data-testid="embed-iframe"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/3BStfesakgeZOxksRnPjhN?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
 
     <!-- SECTION 3: TINKERCAD -->
     <section class="section" id="tinkercad">
@@ -847,282 +672,262 @@
             <p>A little heart I made for you.</p>
           </div>
         </div>
-    
+
         <div class="playlist-shell">
           <div class="playlist-meta" style="margin-bottom: 18px;">
             <small>Arduino Heart LED</small>
           </div>
-    
+
           <div class="tinker-preview">
-            <img
-              id="heartPreview"
-              src="preview.png"
-              alt="Arduino heart preview"
-            />
-    
-            <video
-              id="heartVideo"
-              class="hidden"
-              preload="auto"
-              playsinline
-            >
+            <img id="heartPreview" src="preview.png" alt="Arduino heart preview" />
+
+            <video id="heartVideo" class="hidden" preload="auto" playsinline>
               <source src="simulation.mp4" type="video/mp4" />
             </video>
           </div>
-    
-          <button id="playHeartBtn" class="tinker-button">
-            ▶ Play
-          </button>
+
+          <button id="playHeartBtn" class="tinker-button">▶ Play</button>
         </div>
       </div>
     </section>
-    
-<!-- SECTION 4: BIRTHDAY WISHES -->
-<section class="section" id="wishes">
-  <div class="wishes-hero">
-    <p>“A few words from the people who care about you most.”</p>
-  </div>
 
-  <div class="section-card">
-    <div class="section-heading">
-      <div class="section-number">04</div>
-      <div class="section-title-wrap">
-        <h2>Birthday Wishes</h2>
-        <p>Messages from the people around you, gathered in one place.</p>
-      </div>
-    </div>
-
-    <div class="wish-carousel">
-      <button class="wish-nav wish-prev" aria-label="Previous wish">‹</button>
-
-      <div class="wish-stack">
-        <article class="wish-slide active">
-          <div class="wish-photo">
-            <img src="friend1.png" alt="Friend 1 photo">
-          </div>
-          <div class="wish-label">Message One</div><br>
-          <h3 class="wish-name">francis</h3><br>
-          <p class="wish-message">
-            First of all happy birthday sayo MBTC and GBY, MCTB, NDRRMC, LTFRB, LGBT, BDO, LBC, DSWD, ECQ, OFW, ISTG awayin mo ivan thx.
-          </p>
-        </article>
-
-         <article class="wish-slide next">
-          <div class="wish-label">Message Two</div><br>
-          <h3 class="wish-name">Tine ngek</h3><br>
-          <p class="wish-message">
-            Happy birthday liabellsss 🥺🤍
-          </p><br>
-          <p class="wish-message">
-            You’re such a kind and genuine person, and I’m glad I got to know you. I hope today makes you feel as appreciated and special as you make others feel. You deserve all the good things—enjoy your day!! 💌🎂
-          </p>
-        </article>
-
-        <article class="wish-slide hidden-slide">
-          <div class="wish-photo">
-            <img src="friend3.png" alt="Friend 3 photo">
-          </div>
-          <div class="wish-label">Message Three</div><br>
-          <h3 class="wish-name">baby lauv ni lia 😝</h3><br>
-          <p class="wish-message">
-            if the warmest, kindest, and most genuine soul exists, then it would definitely be lia’s!!
-          </p><br>
-          <p class="wish-message">
-            happy birthday, babes!! thank you for being one of the people who brought light to me during my dark times. your kind words were one of the things i clung to, as they never failed to remind me na things would get better, until it finally did. kaya words can’t describe how grateful i am that i was blessed to call you my friend :))
-          </p><br>
-          <p class="wish-message">
-            may these letters remind you how loved and cherished you are!! i hope you enjoy every bit of your birthday, because you deserve all the happiness in the world. happy birthday kay “sadness” daw, but ray of sunshine ng fg?! love you so lots babes 🩷
-          </p><br>
-          <p class="wish-message">
-            (so cute ng nagphotobomb sa pic 🥺👉🏻👈🏻)
-          </p>
-        </article>
-
-        <article class="wish-slide prev">
-          <div class="wish-photo">
-            <img src="friend4.png" alt="Friend 4 photo">
-          </div>
-          <div class="wish-label">Message Four</div><br>
-          <h3 class="wish-name">ari</h3><br>
-          <p class="wish-message">
-            to lia,
-          </p><br>
-          <p class="wish-message">
-            mas first pa sa all, HAPPY BIRTHDAY MY LENG LENG LENGLOTS LENGLONG!! super duper gurang ka na grabe girl parang kelan lang baby ka pa, ngayon naugod-ugod na BAHSHAHSHA EME
-          </p><br>
-          <p class="wish-message">
-            anyways hehe alam mo ba na i owe u ALOT. feeling ko hindi mo ramdam (bc that’s just how u are) pero i owe so much of my survival last year. you have made so much of my life easier when i was struggling to keep up with the pace. you crashed tf out with me sa acads, you accompanied me kung saan, and tolerated my nonsense all the time. i’m so glad na my kakulitan is rubbing off u hehheheh wag ka mag sawa pls iiyak ako :( i am just so so so grateful for your existence girl! i hope u continue to make budols and impulsive buying kapag nadedemonyo (yolo girl check out m n yan) i’m grateful na i have u in my life lalo na nababaliw na tayo sa program na toh🫩 and tnx making me ur 3rd wheel (sana magkajowa naq pls)
-          </p><br>
-          <p class="wish-message">
-            hapi hapi hapi hapi birthday my lia!! i’m always here for u if u ever need me ;p
-          </p>
-        </article>
-
-        <article class="wish-slide hidden-slide">
-          <div class="wish-label">Message Five</div><br>
-          <h3 class="wish-name">Marg</h3><br>
-          <p class="wish-message">
-            Hi Lia!!! I want to wish you a happy happy happy birthday!!! Tuwing nakakasalubong kita sa campus nakakadagdag ka ng sunshine for the day kasi palagi kang nakasmile :) I hope that you always do well in anything you do!!! Kasama ka palagi sa mga core memories ko during our time in SHS :D Mag-iingat ka palagi!!
-          </p>
-        </article>
-
-        <article class="wish-slide hidden-slide">
-          <div class="wish-photo">
-            <img src="friend6.png" alt="Friend 6 photo">
-          </div>
-          <div class="wish-label">Message Six</div><br>
-          <h3 class="wish-name">jeem</h3><br>
-          <p class="wish-message">
-            HAPPY BIRTHDAYYYYYYYYYYYYYYYYYYYYY LIA MAEEE, MISS U LOADS !! need a gala soon ! see u soon ! mbtc hbd yippe hoorray manifest great things para sau, congrats sa kasal nio ni ivan, omg 3 kids?! omg what bat kau lilipat bansa ni ivan, aw man mamimiss ko kau
-          </p>
-        </article>
-
-        <article class="wish-slide hidden-slide">
-          <div class="wish-photo">
-            <img src="friend7.png" alt="Friend 7 photo">
-          </div>
-          <div class="wish-label">Message Seven</div><br>
-          <h3 class="wish-name">Onnie</h3><br>
-          <p class="wish-message">
-            happy birthday, my leeyuuh! i love you so much 🥹 im so glad na i get to celebrate another birthday with you kahit hindi ako physically there (again hayy). i may not say this a lot, but you’re genuinely one of the people i thank God for the most. you’re truly someone i never knew i needed until you came along.
-          </p><br>
-          <p class="wish-message">
-            please always be gentle with yourself the same way you are with everyone else. whenever you feel alone or your mind and heart are too heavy, please always remember na you still have me to lean on, okay? i hope you’ll take care and guard your heart always, and know that you can always run to me no matter what.
-          </p><br>
-          <p class="wish-message">
-            sorry if i can’t be with you on your special day, but i promise babawi ako soon oki! i love you always, to the moon and back &lt;3
-          </p><br>
-          <p class="wish-message">
-            P.S. this pic will always be one of my fav picture of us huhu we babieees
-          </p>
-        </article>
+    <!-- SECTION 4: BIRTHDAY WISHES -->
+    <section class="section" id="wishes">
+      <div class="wishes-hero">
+        <p>“A few words from the people who care about you most.”</p>
       </div>
 
-      <button class="wish-nav wish-next" aria-label="Next wish">›</button>
-    </div>
+      <div class="section-card">
+        <div class="section-heading">
+          <div class="section-number">04</div>
+          <div class="section-title-wrap">
+            <h2>Birthday Wishes</h2>
+            <p>Messages from the people around you, gathered in one place.</p>
+          </div>
+        </div>
 
-    <div class="wish-dots">
-      <button class="dot active" aria-label="Go to wish 1"></button>
-      <button class="dot" aria-label="Go to wish 2"></button>
-      <button class="dot" aria-label="Go to wish 3"></button>
-      <button class="dot" aria-label="Go to wish 4"></button>
-      <button class="dot" aria-label="Go to wish 5"></button>
-      <button class="dot" aria-label="Go to wish 6"></button>
-      <button class="dot" aria-label="Go to wish 7"></button>
-    </div>
-  </div>
-</section>
+        <div class="wish-carousel">
+          <button class="wish-nav wish-prev" aria-label="Previous wish">‹</button>
 
-    <footer>
-      Made with love.
-    </footer>
+          <div class="wish-stack">
+            <article class="wish-slide active">
+              <div class="wish-photo">
+                <img src="friend1.png" alt="Friend 1 photo" />
+              </div>
+              <div class="wish-label">Message One</div>
+              <h3 class="wish-name">francis</h3>
+              <p class="wish-message">
+                First of all happy birthday sayo MBTC and GBY, MCTB, NDRRMC, LTFRB, LGBT, BDO, LBC, DSWD, ECQ, OFW, ISTG awayin mo ivan thx.
+              </p>
+            </article>
+
+            <article class="wish-slide next">
+              <div class="wish-label">Message Two</div>
+              <h3 class="wish-name">Tine ngek</h3>
+              <p class="wish-message">
+                Happy birthday liabellsss 🥺🤍
+              </p>
+              <p class="wish-message">
+                You’re such a kind and genuine person, and I’m glad I got to know you. I hope today makes you feel as appreciated and special as you make others feel. You deserve all the good things—enjoy your day!! 💌🎂
+              </p>
+            </article>
+
+            <article class="wish-slide hidden-slide">
+              <div class="wish-photo">
+                <img src="friend3.png" alt="Friend 3 photo" />
+              </div>
+              <div class="wish-label">Message Three</div>
+              <h3 class="wish-name">baby lauv ni lia 😝</h3>
+              <p class="wish-message">
+                if the warmest, kindest, and most genuine soul exists, then it would definitely be lia’s!!
+              </p>
+              <p class="wish-message">
+                happy birthday, babes!! thank you for being one of the people who brought light to me during my dark times. your kind words were one of the things i clung to, as they never failed to remind me na things would get better, until it finally did. kaya words can’t describe how grateful i am that i was blessed to call you my friend :))
+              </p>
+              <p class="wish-message">
+                may these letters remind you how loved and cherished you are!! i hope you enjoy every bit of your birthday, because you deserve all the happiness in the world. happy birthday kay “sadness” daw, but ray of sunshine ng fg?! love you so lots babes 🩷
+              </p>
+              <p class="wish-message">
+                (so cute ng nagphotobomb sa pic 🥺👉🏻👈🏻)
+              </p>
+            </article>
+
+            <article class="wish-slide prev">
+              <div class="wish-photo">
+                <img src="friend4.png" alt="Friend 4 photo" />
+              </div>
+              <div class="wish-label">Message Four</div>
+              <h3 class="wish-name">ari</h3>
+              <p class="wish-message">to lia,</p>
+              <p class="wish-message">
+                mas first pa sa all, HAPPY BIRTHDAY MY LENG LENG LENGLOTS LENGLONG!! super duper gurang ka na grabe girl parang kelan lang baby ka pa, ngayon naugod-ugod na BAHSHAHSHA EME
+              </p>
+              <p class="wish-message">
+                anyways hehe alam mo ba na i owe u ALOT. feeling ko hindi mo ramdam (bc that’s just how u are) pero i owe so much of my survival last year. you have made so much of my life easier when i was struggling to keep up with the pace. you crashed tf out with me sa acads, you accompanied me kung saan, and tolerated my nonsense all the time. i’m so glad na my kakulitan is rubbing off u hehheheh wag ka mag sawa pls iiyak ako :( i am just so so so grateful for your existence girl! i hope u continue to make budols and impulsive buying kapag nadedemonyo (yolo girl check out m n yan) i’m grateful na i have u in my life lalo na nababaliw na tayo sa program na toh🫩 and tnx making me ur 3rd wheel (sana magkajowa naq pls)
+              </p>
+              <p class="wish-message">
+                hapi hapi hapi hapi birthday my lia!! i’m always here for u if u ever need me ;p
+              </p>
+            </article>
+
+            <article class="wish-slide hidden-slide">
+              <div class="wish-label">Message Five</div>
+              <h3 class="wish-name">Marg</h3>
+              <p class="wish-message">
+                Hi Lia!!! I want to wish you a happy happy happy birthday!!! Tuwing nakakasalubong kita sa campus nakakadagdag ka ng sunshine for the day kasi palagi kang nakasmile :) I hope that you always do well in anything you do!!! Kasama ka palagi sa mga core memories ko during our time in SHS :D Mag-iingat ka palagi!!
+              </p>
+            </article>
+
+            <article class="wish-slide hidden-slide">
+              <div class="wish-photo">
+                <img src="friend6.png" alt="Friend 6 photo" />
+              </div>
+              <div class="wish-label">Message Six</div>
+              <h3 class="wish-name">jeem</h3>
+              <p class="wish-message">
+                HAPPY BIRTHDAYYYYYYYYYYYYYYYYYYYYY LIA MAEEE, MISS U LOADS !! need a gala soon ! see u soon ! mbtc hbd yippe hoorray manifest great things para sau, congrats sa kasal nio ni ivan, omg 3 kids?! omg what bat kau lilipat bansa ni ivan, aw man mamimiss ko kau
+              </p>
+            </article>
+
+            <article class="wish-slide hidden-slide">
+              <div class="wish-photo">
+                <img src="friend7.png" alt="Friend 7 photo" />
+              </div>
+              <div class="wish-label">Message Seven</div>
+              <h3 class="wish-name">Onnie</h3>
+              <p class="wish-message">
+                happy birthday, my leeyuuh! i love you so much 🥹 im so glad na i get to celebrate another birthday with you kahit hindi ako physically there (again hayy). i may not say this a lot, but you’re genuinely one of the people i thank God for the most. you’re truly someone i never knew i needed until you came along.
+              </p>
+              <p class="wish-message">
+                please always be gentle with yourself the same way you are with everyone else. whenever you feel alone or your mind and heart are too heavy, please always remember na you still have me to lean on, okay? i hope you’ll take care and guard your heart always, and know that you can always run to me no matter what.
+              </p>
+              <p class="wish-message">
+                sorry if i can’t be with you on your special day, but i promise babawi ako soon oki! i love you always, to the moon and back &lt;3
+              </p>
+              <p class="wish-message">
+                P.S. this pic will always be one of my fav picture of us huhu we babieees
+              </p>
+            </article>
+          </div>
+
+          <button class="wish-nav wish-next" aria-label="Next wish">›</button>
+        </div>
+
+        <div class="wish-dots">
+          <button class="dot active" aria-label="Go to wish 1"></button>
+          <button class="dot" aria-label="Go to wish 2"></button>
+          <button class="dot" aria-label="Go to wish 3"></button>
+          <button class="dot" aria-label="Go to wish 4"></button>
+          <button class="dot" aria-label="Go to wish 5"></button>
+          <button class="dot" aria-label="Go to wish 6"></button>
+          <button class="dot" aria-label="Go to wish 7"></button>
+        </div>
+      </div>
+    </section>
+
+    <footer>Made with love.</footer>
   </main>
-  <div id="photoModal" class="photo-modal">
-    <span class="photo-close">&times;</span>
-      <img id="photoModalImg" src="" alt="Expanded photo">
-  </div>
-</body>
-    <script>
-  const playBtn = document.getElementById("playHeartBtn");
-  const preview = document.getElementById("heartPreview");
-  const video = document.getElementById("heartVideo");
-  
-  let isPlaying = false;
-  
-  playBtn.addEventListener("click", () => {
-  
-    // PLAY
-    if (!isPlaying) {
-  
-      preview.classList.add("hidden");
-      video.classList.remove("hidden");
-  
-      video.play();
-  
-      playBtn.innerHTML = "⏸ Pause";
-  
-      isPlaying = true;
-  
-    } else {
-  
-      // PAUSE
-      video.pause();
-  
-      playBtn.innerHTML = "▶ Play";
-  
-      isPlaying = false;
-    }
-  });
-  
-  video.addEventListener("ended", () => {
-  
-    video.classList.add("hidden");
-    preview.classList.remove("hidden");
-  
-    playBtn.innerHTML = "▶ Play";
-  
-    isPlaying = false;
-  });
 
-      const wishSlides = document.querySelectorAll(".wish-slide");
-      const wishDots = document.querySelectorAll(".wish-dots .dot");
-      const prevWishBtn = document.querySelector(".wish-prev");
-      const nextWishBtn = document.querySelector(".wish-next");
-      const wishStack = document.querySelector(".wish-stack");
-      
-      let currentWish = 0;
-      
-      function updateWishCarousel() {
-        wishSlides.forEach((slide, index) => {
-          slide.classList.remove("active", "prev", "next", "hidden-slide");
-      
-          if (index === currentWish) {
-            slide.classList.add("active");
-          } else if (index === (currentWish - 1 + wishSlides.length) % wishSlides.length) {
-            slide.classList.add("prev");
-          } else if (index === (currentWish + 1) % wishSlides.length) {
-            slide.classList.add("next");
-          } else {
-            slide.classList.add("hidden-slide");
-          }
-        });
-      
-        wishDots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentWish);
-        });
-      }
-      
-      function nextWish() {
-        currentWish = (currentWish + 1) % wishSlides.length;
-        updateWishCarousel();
-      }
-      
-      function prevWish() {
-        currentWish = (currentWish - 1 + wishSlides.length) % wishSlides.length;
-        updateWishCarousel();
-      }
-      
+  <div id="photoModal" class="photo-modal">
+    <div class="photo-modal-content">
+      <span class="photo-close">&times;</span>
+      <img id="photoModalImg" src="" alt="Expanded photo" />
+    </div>
+  </div>
+
+  <script>
+    const playBtn = document.getElementById("playHeartBtn");
+    const preview = document.getElementById("heartPreview");
+    const video = document.getElementById("heartVideo");
+
+    let isPlaying = false;
+
+    if (playBtn && preview && video) {
+      playBtn.addEventListener("click", () => {
+        if (!isPlaying) {
+          preview.classList.add("hidden");
+          video.classList.remove("hidden");
+          video.play();
+
+          playBtn.innerHTML = "⏸ Pause";
+          isPlaying = true;
+        } else {
+          video.pause();
+
+          playBtn.innerHTML = "▶ Play";
+          isPlaying = false;
+        }
+      });
+
+      video.addEventListener("ended", () => {
+        video.classList.add("hidden");
+        preview.classList.remove("hidden");
+
+        playBtn.innerHTML = "▶ Play";
+        isPlaying = false;
+      });
+    }
+
+    const wishSlides = document.querySelectorAll(".wish-slide");
+    const wishDots = document.querySelectorAll(".wish-dots .dot");
+    const prevWishBtn = document.querySelector(".wish-prev");
+    const nextWishBtn = document.querySelector(".wish-next");
+    const wishStack = document.querySelector(".wish-stack");
+
+    let currentWish = 0;
+
+    function updateWishCarousel() {
+      wishSlides.forEach((slide, index) => {
+        slide.classList.remove("active", "prev", "next", "hidden-slide");
+
+        if (index === currentWish) {
+          slide.classList.add("active");
+          slide.scrollTop = 0;
+        } else if (index === (currentWish - 1 + wishSlides.length) % wishSlides.length) {
+          slide.classList.add("prev");
+        } else if (index === (currentWish + 1) % wishSlides.length) {
+          slide.classList.add("next");
+        } else {
+          slide.classList.add("hidden-slide");
+        }
+      });
+
+      wishDots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentWish);
+      });
+    }
+
+    function nextWish() {
+      currentWish = (currentWish + 1) % wishSlides.length;
+      updateWishCarousel();
+    }
+
+    function prevWish() {
+      currentWish = (currentWish - 1 + wishSlides.length) % wishSlides.length;
+      updateWishCarousel();
+    }
+
+    if (nextWishBtn && prevWishBtn && wishStack) {
       nextWishBtn.addEventListener("click", nextWish);
       prevWishBtn.addEventListener("click", prevWish);
-      
+
       wishDots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
           currentWish = index;
           updateWishCarousel();
         });
       });
-      
-      /* swipe support for phone */
+
       let startX = 0;
-      
-      wishStack.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
+
+      wishStack.addEventListener("touchstart", (event) => {
+        startX = event.touches[0].clientX;
       });
-      
-      wishStack.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
+
+      wishStack.addEventListener("touchend", (event) => {
+        const endX = event.changedTouches[0].clientX;
         const diff = startX - endX;
-      
+
         if (Math.abs(diff) > 50) {
           if (diff > 0) {
             nextWish();
@@ -1131,31 +936,41 @@
           }
         }
       });
-      
-      updateWishCarousel();
 
-      const photoModal = document.getElementById("photoModal");
-      const photoModalImg = document.getElementById("photoModalImg");
-      const photoClose = document.querySelector(".photo-close");
-      
-      document.querySelectorAll(".wish-photo img").forEach(img => {
+      updateWishCarousel();
+    }
+
+    const photoModal = document.getElementById("photoModal");
+    const photoModalImg = document.getElementById("photoModalImg");
+    const photoClose = document.querySelector(".photo-close");
+
+    if (photoModal && photoModalImg && photoClose) {
+      document.querySelectorAll(".wish-photo img").forEach((img) => {
         img.addEventListener("click", () => {
           photoModalImg.src = img.src;
           photoModal.classList.add("show");
         });
       });
-      
-      photoClose.addEventListener("click", () => {
+
+      function closePhotoModal() {
         photoModal.classList.remove("show");
         photoModalImg.src = "";
-      });
-      
-      photoModal.addEventListener("click", (e) => {
-        if (e.target === photoModal) {
-          photoModal.classList.remove("show");
-          photoModalImg.src = "";
+      }
+
+      photoClose.addEventListener("click", closePhotoModal);
+
+      photoModal.addEventListener("click", (event) => {
+        if (event.target === photoModal) {
+          closePhotoModal();
         }
       });
 
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closePhotoModal();
+        }
+      });
+    }
   </script>
+</body>
 </html>
