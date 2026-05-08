@@ -466,8 +466,22 @@
       transform: translateX(0) scale(1) rotateY(0deg);
       z-index: 5;
       pointer-events: auto;
-    }
     
+      background:
+        linear-gradient(
+          180deg,
+          rgba(22,22,22,0.98),
+          rgba(10,10,10,0.98)
+        );
+    
+      border: 1px solid rgba(200,169,107,0.55);
+    
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.45),
+        0 0 40px rgba(200,169,107,0.08);
+    
+      backdrop-filter: none;
+    }    
     .wish-slide.prev {
       opacity: 0.34;
       transform: translateX(-34%) scale(0.88) rotateY(12deg);
